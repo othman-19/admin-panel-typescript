@@ -2,7 +2,7 @@ import * as React from "react";
 import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
 
-import { FormValues, MyFormProps, OtherProps} from '../interfaces';
+import { FormValues, MyFormProps, OtherProps } from '../interfaces';
 
 const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
     const {
