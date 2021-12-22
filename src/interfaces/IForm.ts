@@ -1,13 +1,13 @@
-interface FormValues {
+export interface FormValues {
   email: string;
   password: string;
 }
 
-interface MyFormProps {
+export interface MyFormProps {
   initialEmail?: string;
   initialPassword?: string;
 }
 
-interface OtherProps {
+export interface OtherProps {
     title?: string;
 }
