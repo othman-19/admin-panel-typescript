@@ -17,35 +17,54 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
     } = props;
 
     return (
-      <><h1>{title}</h1><form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          width={50}
-          type="email"
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email} />
-
-        <label>Password</label>
-        <input
-          width={50}
-          type="password"
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password} />
-
-        <button
-          type="submit"
-          disabled={isSubmitting ||
-            !!(errors.email && touched.email) ||
-            !!(errors.password && touched.password)}
-        >
-          Sign In
-        </button>
-      </form></>
-
+      <div className="col-md-12">
+        <div className="card card-container">
+        <h1>{title}</h1>
+          <img
+            src="../assets/logo.svg"
+            alt="profile-img"
+            className="profile-img-card"
+          />
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+              />
+            </div>
+          <div className="form-group">
+            <button
+              type="submit"
+              className="btn btn-primary btn-block"
+              disabled={isSubmitting ||
+                !!(errors.email && touched.email) ||
+                !!(errors.password && touched.password)}
+            >
+              {isSubmitting && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+              <span>Sign In</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     );
 };
 
