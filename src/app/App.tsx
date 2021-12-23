@@ -1,5 +1,4 @@
-import React from 'react';
-import { FC } from 'react'
+import React, { FC } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import Login from '../components/ login.component'
