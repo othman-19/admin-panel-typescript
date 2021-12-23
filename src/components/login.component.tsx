@@ -49,7 +49,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
                 value={values.password}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group my-4" >
               <button
                 type="submit"
                 className="btn btn-primary btn-block"

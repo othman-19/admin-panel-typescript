@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import Login from '../components/ login.component'
+import Login from '../components/login.component'
 
 const App: FC = () => {
   return (
