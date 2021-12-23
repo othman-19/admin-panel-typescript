@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { login } from "../services/auth.service";
 import image from "../assets/moodme-logo.png"
 
-import { FormValues, MyFormProps, OtherProps } from '../interfaces';
+import { FormValues, MyFormProps, OtherProps } from '../Models';
 
 const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
     const {

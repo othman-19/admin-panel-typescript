@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FormValues } from "../interfaces"
+import { FormValues } from "../Models"
 
 const API_URL = "http://localhost:8080/FakeApi/auth/";
 
