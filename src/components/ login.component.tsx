@@ -1,6 +1,7 @@
 import * as React from "react";
 import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
+import image from "../assets/moodme-logo.png"
 
 import { FormValues, MyFormProps, OtherProps } from '../interfaces';
 
@@ -19,9 +20,9 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
     return (
       <div className="col-md-12">
         <div className="card card-container">
-        <h1>{title}</h1>
+          <h1>{title}</h1>
           <img
-            src="../assets/logo.svg"
+            src={image}
             alt="profile-img"
             className="profile-img-card"
           />
@@ -48,23 +49,23 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
                 value={values.password}
               />
             </div>
-          <div className="form-group">
-            <button
-              type="submit"
-              className="btn btn-primary btn-block"
-              disabled={isSubmitting ||
-                !!(errors.email && touched.email) ||
-                !!(errors.password && touched.password)}
-            >
-              {isSubmitting && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Sign In</span>
-            </button>
-          </div>
-        </form>
+            <div className="form-group">
+              <button
+                type="submit"
+                className="btn btn-primary btn-block"
+                disabled={isSubmitting ||
+                  !!(errors.email && touched.email) ||
+                  !!(errors.password && touched.password)}
+              >
+                {isSubmitting && (
+                  <span className="spinner-border spinner-border-sm"></span>
+                )}
+                <span>Sign In</span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     );
 };
 
