@@ -4,11 +4,10 @@ import { FormValues } from "../interfaces"
 const API_URL = "http://localhost:8080/FakeApi/auth/";
 
 const login = async (values: FormValues) => {
-  const { email, password } = values;
   try {
     const response = await axios.post(
       API_URL + "signin",
-      { email, password }
+      values
     )
     const { data, data:{accessToken} } = response
     if (accessToken) {

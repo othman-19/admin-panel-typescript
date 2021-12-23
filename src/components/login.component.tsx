@@ -1,6 +1,7 @@
 import * as React from "react";
 import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
+import { login } from "../services/auth.service";
 import image from "../assets/moodme-logo.png"
 
 import { FormValues, MyFormProps, OtherProps } from '../interfaces';
@@ -83,10 +84,11 @@ const Login = withFormik<MyFormProps, FormValues>({
     }),
 
     handleSubmit(
-        { email, password }: FormValues,
-        { props, setSubmitting, setErrors }
+      { email, password }: FormValues,
+      { props, setSubmitting, setErrors }
     ) {
-        console.log(email, password);
+      // login({email, password});
+      console.log(email, password);
     }
 })(InnerForm);
 
