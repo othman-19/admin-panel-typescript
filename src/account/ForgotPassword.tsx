@@ -71,7 +71,7 @@ const InnerForm = (props: OtherProps & FormikProps<ForgotEmail>) => {
   );
 };
 
-const Login = withFormik<MyFormProps, ForgotEmail>({
+const ForgotPassword = withFormik<MyFormProps, ForgotEmail>({
     mapPropsToValues: props => ({
         email: props.initialEmail || ""
     }),
@@ -91,4 +91,4 @@ const Login = withFormik<MyFormProps, ForgotEmail>({
     }
 })(InnerForm);
 
-export default Login;
+export default ForgotPassword;

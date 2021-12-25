@@ -16,6 +16,8 @@ export interface resetPassword {
 export interface MyFormProps {
   initialEmail?: string;
   initialPassword?: string;
+  initialConfirmPassword?: string;
+  initialToken?: string;
 }
 
 export interface OtherProps {
