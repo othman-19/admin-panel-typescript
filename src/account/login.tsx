@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withFormik, FormikProps,ErrorMessage } from "formik";
+import { withFormik, FormikProps, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
 import { login } from "../services/auth.service";
 import image from "../assets/moodme-logo.png"
@@ -29,10 +29,10 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
           alt="profile-img"
           className="profile-img-card"
         />
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input
+            <Field
               className="form-control"
               type="email"
               name="email"
@@ -49,7 +49,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input
+            <Field
               className="form-control"
               type="password"
               name="password"
@@ -84,7 +84,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
               </div>
             </div>
           )}
-        </form>
+        </Form>
       </div>
     </div>
   );
