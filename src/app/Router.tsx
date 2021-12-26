@@ -15,6 +15,7 @@ const AppRouter: FC = () => (
   <div className="content">
     <Routes>
       <Route path="/" element={<Login title='login'/>} />
+      <Route path="/login" element={<Login title='login'/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/users/:userId" element={<Profile />} />
