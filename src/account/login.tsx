@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import  { Link } from 'react-router-dom'
 import  { useNavigate } from 'react-router'
-
-import { Formik, FormikHelpers, FormikProps, ErrorMessage, Field, Form} from "formik";
+import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
 // import { login } from "../services/auth.service";
 import image from "../assets/moodme-logo.png"
 import { FormValues, OtherProps } from '../Models';
 
 
-const Login = (props: OtherProps) => {
-  const {
-    title,
-  } = props;
+const Login = ({title}: OtherProps) => {
 
   const [message, setMessage] = useState("")
   const navigate = useNavigate()
@@ -45,7 +41,11 @@ const Login = (props: OtherProps) => {
   }
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
       {({ errors, touched, isSubmitting, handleBlur, handleChange }) => (
         <div className="col-md-12">
           <div className="card card-container">
