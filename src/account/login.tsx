@@ -46,7 +46,7 @@ const Login = ({title}: OtherProps) => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, isSubmitting, handleBlur, handleChange }) => (
+      {({ errors, touched, isSubmitting}) => (
         <div className="col-md-12">
           <div className="card card-container">
             <h1>{title}</h1>
@@ -62,8 +62,6 @@ const Login = ({title}: OtherProps) => {
                   className="form-control"
                   type="email"
                   name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="email"
@@ -78,8 +76,6 @@ const Login = ({title}: OtherProps) => {
                   className="form-control"
                   type="password"
                   name="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="password"
