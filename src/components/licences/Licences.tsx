@@ -1,6 +1,6 @@
 import React, { FC , useEffect, useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
+import '../../app/App.css'
 import { getLicences } from '../../services/license/licence.service';
 import { Licence } from '../../Models';
 

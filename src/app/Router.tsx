@@ -14,7 +14,7 @@ import Licences from '../components/licences/Licences';
 const AppRouter: FC = () => (
   <div className="content">
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Login title='login'/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/users/:userId" element={<Profile />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />

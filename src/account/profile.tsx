@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
+import '../app/App.css';
 
 const Profile: FC = () => {
   return (
