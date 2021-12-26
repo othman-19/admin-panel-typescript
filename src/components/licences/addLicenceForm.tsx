@@ -1,39 +1,36 @@
 import React, { useState } from "react";
 import  { Link } from 'react-router-dom'
-import  { useNavigate } from 'react-router'
 import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
-// import { newLicence } from "../services/licence";
-import image from "../assets/moodme-logo.png"
-import { FormValues, OtherProps } from '../../Models';
+// import { CreateLicence } from "../services/licence";
+import image from "../../assets/moodme-logo.png"
+import { CreateLicence } from '../../Models';
 
 
-const Login = ({title}: OtherProps) => {
-
+const AddLicenseForm = () => {
   const [message, setMessage] = useState("")
-  const navigate = useNavigate()
-  
-  const initialValues : FormValues = {
-      email: '',
-      password: ''
+
+  const initialValues : CreateLicence = {
+    productID: 0,
+    appID: '',
+    customerID: 0,
+    expiresAt: 0,
   };
 
   const validationSchema = Yup.object().shape({
-      email: Yup.string()
-          .email('Email is invalid')
-          .required('Email is required'),
-      password: Yup.string().required('Password is required')
+      productID: Yup.number()
+        .required('Product is required'),
+      appID: Yup.string().required('Application is required'),
   });
 
   const handleSubmit = (
-    { email, password }: FormValues,
-    { setSubmitting }: FormikHelpers<FormValues>
+    { productID, appID, customerID, expiresAt}: CreateLicence,
+    { setSubmitting }: FormikHelpers<CreateLicence>
   ) => {
     try {
-      // await login({email, password});
-      console.log({email, password})
-      setMessage("Message from login")
-      navigate("/profile")
+      // await CreateLicence({productID, appID, customerID, expiresAt});
+      console.log({productID, appID, customerID, expiresAt})
+      setMessage("Message from create licence")
     } catch(error) {
       setSubmitting(false);
       console.log(error)
@@ -49,7 +46,7 @@ const Login = ({title}: OtherProps) => {
       {({ errors, touched, isSubmitting}) => (
         <div className="col-md-12">
           <div className="card card-container">
-            <h1>{title}</h1>
+            <h1>Create Licence</h1>
             <img
               src={image}
               alt="profile-img"
@@ -57,28 +54,41 @@ const Login = ({title}: OtherProps) => {
             />
             <Form>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="productID">productID</label>
                 <Field
                   className="form-control"
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="productID"
                 />
                 <ErrorMessage
-                  name="email"
+                  name="productID"
                   component="div"  
                   className="alert alert-danger"
                 />
     
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="appID">appID</label>
                 <Field
                   className="form-control"
-                  type="password"
-                  name="password"
+                  type="text"
+                  name="appID"
                 />
                 <ErrorMessage
-                  name="password"
+                  name="appID"
+                  component="div"
+                  className="alert alert-danger"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="customerID">customerID</label>
+                <Field
+                  className="form-control"
+                  type="text"
+                  name="customerID"
+                />
+                <ErrorMessage
+                  name="customerID"
                   component="div"
                   className="alert alert-danger"
                 />
@@ -87,14 +97,17 @@ const Login = ({title}: OtherProps) => {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block"
-                  disabled={isSubmitting ||
-                    !!(errors.email && touched.email) ||
-                    !!(errors.password && touched.password)}
+                  disabled={
+                    isSubmitting ||
+                    (!!errors.productID && touched.productID) ||
+                    (!!errors.appID && touched.appID) ||
+                    (!!errors.customerID && touched.customerID)
+                  }
                 >
                   {isSubmitting && (
                     <span className="spinner-border spinner-border-sm"></span>
                   )}
-                  <span>Sign In</span>
+                  <span>Create Licence</span>
                 </button>
               </div>
               {message && (
@@ -105,11 +118,8 @@ const Login = ({title}: OtherProps) => {
                 </div>
               )}
             </Form>
-            <Link to="/forgot-password">
-              Forgot Password?
-            </Link>
-            <Link to="/register">
-              Create new account?
+            <Link to="/">
+              Know more about licences?
             </Link>
           </div>
         </div>
@@ -118,4 +128,4 @@ const Login = ({title}: OtherProps) => {
   )
 }
 
-export default Login;
+export default AddLicenseForm;

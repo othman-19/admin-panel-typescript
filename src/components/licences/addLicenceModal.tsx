@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import '../../app/App.css';
 import Modal from 'react-modal';
+import AddLicenseForm from './addLicenceForm';
 
 Modal.setAppElement('#root')
 
@@ -16,7 +17,7 @@ const AddLicenceModal: FC = () => {
         overlayClassName="Overlay"
       >
         <h2>Add new licence</h2>
-        <div>Licence Form</div>
+        <AddLicenseForm />
         <div>
           <button onClick={() => setModalIsOpen(false)}>Close</button>
         </div>
