@@ -108,6 +108,9 @@ const Login = ({title}: OtherProps) => {
             <Link to="/forgot-password">
               Forgot Password?
             </Link>
+            <Link to="/register">
+              Create new account?
+            </Link>
           </div>
         </div>
       )}

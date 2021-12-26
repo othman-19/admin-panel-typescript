@@ -93,7 +93,7 @@ const ForgotPassword = () => {
               )}
             </Form>
             <Link to="/login">
-              Forgot Password?
+              Login
             </Link>
           </div>
         </div>

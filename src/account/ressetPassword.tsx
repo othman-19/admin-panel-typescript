@@ -1,119 +1,119 @@
 import React, { useState } from "react";
-import { withFormik, FormikProps, ErrorMessage, Field, Form } from "formik";
+import  { Link } from 'react-router-dom'
+import  { useNavigate } from 'react-router'
+import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
 // import { resetPassword } from "../services/auth.service";
 import image from "../assets/moodme-logo.png"
+import { resetPassword } from '../Models';
 
-import { resetPassword, MyFormProps, OtherProps } from '../Models';
-
-const InnerForm = (props: OtherProps & FormikProps<resetPassword>) => {
+const ResetPassword = () => {
   const [message, setMessage] = useState("")
-  // still token fetch and status
-  const {
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting,
-      title,
-  } = props;
+  const navigate = useNavigate()
+  
+  const initialValues : resetPassword = {
+      password: '',
+      confirmPassword: '',
+      token: '',
+  };
 
-  return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <h1>{title}</h1>
-        <img
-          src={image}
-          alt="profile-img"
-          className="profile-img-card"
-        />
-        <Form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <Field
-              className="form-control"
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            <ErrorMessage
-              name="password"
-              component="div"  
-              className="alert alert-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm password</label>
-            <Field
-              className="form-control"
-              type="password"
-              name="confirmPassword"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirmPassword}
-            />
-            <ErrorMessage
-              name="confirmPassword"
-              component="div"  
-              className="alert alert-danger"
-            />
-          </div>
-          <div className="form-group my-4" >
-            <button
-              type="submit"
-              className="btn btn-primary btn-block"
-              disabled={
-                isSubmitting ||
-                (!!errors.password && touched.password) ||
-                (!!errors.confirmPassword && touched.confirmPassword)
-              }
-            >
-              {isSubmitting && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Send your email</span>
-            </button>
-          </div>
-          {message && (
-            <div className="form-group my-4">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            </div>
-          )}
-        </Form>
-      </div>
-    </div>
-  );
-};
-
-const ResetPassword = withFormik<MyFormProps, resetPassword>({
-  mapPropsToValues: props => ({
-    password: props.initialPassword || "",
-    confirmPassword: props.initialConfirmPassword || "",
-    token: props.initialToken || "",
-  }),
-
-  validationSchema: Yup.object().shape({
+  const validationSchema = Yup.object().shape({
     password: Yup.string()
         .min(6, 'Password must be at least 6 characters')
         .required('Password is required'),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
-  }),
+  });
 
-  handleSubmit(
+  const handleSubmit = (
     { password, confirmPassword, token }: resetPassword,
-    { props, setSubmitting, setErrors },
-  ) {
-    // resetPasword({ password, confirmPassword, token });
-    console.log(password, confirmPassword, token);
+    { setSubmitting }: FormikHelpers<resetPassword>
+  ) => {
+    try {
+      // await login({email, password});
+      console.log({password})
+      setMessage("Message from resset password service")
+      navigate("/login")
+    } catch(error) {
+      setSubmitting(false);
+      console.log(error)
+    }
   }
-})(InnerForm);
 
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched, isSubmitting}) => (
+        <div className="col-md-12">
+          <div className="card card-container">
+            <h1>Reset Password</h1>
+            <img
+              src={image}
+              alt="profile-img"
+              className="profile-img-card"
+            />
+            <Form>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <Field
+                  className="form-control"
+                  type="password"
+                  name="password"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"  
+                  className="alert alert-danger"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm password</label>
+                <Field
+                  className="form-control"
+                  type="password"
+                  name="confirmPassword"
+                />
+                <ErrorMessage
+                  name="confirmPassword"
+                  component="div"  
+                  className="alert alert-danger"
+                />
+              </div>
+              <div className="form-group my-4" >
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  disabled={
+                    isSubmitting ||
+                    (!!errors.password && touched.password) ||
+                    (!!errors.confirmPassword && touched.confirmPassword)
+                  }
+                >
+                  {isSubmitting && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Send your email</span>
+                </button>
+              </div>
+              {message && (
+                <div className="form-group my-4">
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                </div>
+              )}
+            </Form>
+            <Link to="/login">
+              Login
+            </Link>
+          </div>
+        </div>
+      )}
+    </Formik>
+  )
+}
 export default ResetPassword;

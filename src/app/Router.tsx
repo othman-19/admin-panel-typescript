@@ -16,6 +16,7 @@ const AppRouter: FC = () => (
     <Routes>
       <Route path="/" element={<Login title='login'/>} />
       <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/users/:userId" element={<Profile />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
