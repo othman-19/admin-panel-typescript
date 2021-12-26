@@ -44,9 +44,9 @@ const AddLicenseForm = () => {
       onSubmit={handleSubmit}
     >
       {({ errors, touched, isSubmitting}) => (
-        <div className="col-md-12">
+        <div className="col-md-12 ModalForm">
           <div className="card card-container">
-            <h1>Create Licence</h1>
+            <h3>Create Licence</h3>
             <img
               src={image}
               alt="profile-img"

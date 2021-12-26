@@ -26,8 +26,8 @@ label {
 }
 
 .profile-img-card {
-  width: 30%;
-  height: 30%;
+  width: 20%;
+  height: 20%;
   margin: 0 auto 10px;
   display: block;
   -moz-border-radius: 50%;
@@ -52,11 +52,11 @@ label {
 
 .Modal {
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  background-color: papayawhip;
+  top: 10px;
+  left: 400px;
+  right: 400px;
+  bottom: 10px;
+  background-color: rgba(255, 239, 213, 0);
 }
 
 .Overlay {
@@ -65,5 +65,10 @@ label {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rebeccapurple;
+  background-color: rgba(102, 51, 153, 0.322);
+}
+
+.ModalForm{
+  position: absolute;
+  top: 30px;
 }

@@ -16,11 +16,17 @@ const AddLicenceModal: FC = () => {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <h2>Add new licence</h2>
-        <AddLicenseForm />
-        <div>
-          <button onClick={() => setModalIsOpen(false)}>Close</button>
-        </div>
+        <div><AddLicenseForm /></div>
+          
+          <button
+            type="button"
+            className="btn-close btn-close-white"
+            aria-label="Close"
+            onClick={() => setModalIsOpen(false)}
+          >
+          </button>
+        
+        
       </Modal>
     </>
   )
