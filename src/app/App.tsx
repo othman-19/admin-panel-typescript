@@ -2,13 +2,12 @@ import React, { FC } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import AppRouter from './Router';
-import AddLicenceModal from '../components/licences/addLicenceModal';
-
+import AddLicenseModal from '../components/licenses/addLicenseModal';
 
 const App: FC = () => {
   return (
     <div className="App">
-      <AddLicenceModal />
+      <AddLicenseModal />
       <AppRouter />
     </div>
   );
