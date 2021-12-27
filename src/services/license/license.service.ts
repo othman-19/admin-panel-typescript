@@ -38,18 +38,15 @@ const createLicense = async (licenseData: CreateLicense) => {
 
 const deleteLicense = async (license: License) => {
   const url= `${API_url}/license`;
-  const headers= {
-    'Content-Type': 'application/json',
-  };
-try {
-  const response = await axios.post(url, license._id, {headers});
-  const data = response.data;
-  return data;
-} catch (err) {
-  return {
-    error: err,
-  };
-}
+  try {
+    const response = await axios.delete(url, {data: license._id});
+    const data = response.data;
+    return data;
+  } catch (err) {
+    return {
+      error: err,
+    };
+  }
 };
 
 
