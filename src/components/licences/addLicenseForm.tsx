@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import  { Link } from 'react-router-dom'
 import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
-// import { CreateLicence } from "../services/licence";
+// import { CreateLicense } from "../services/license";
 import image from "../../assets/moodme-logo.png"
-import { CreateLicence } from '../../Models';
+import { CreateLicense } from '../../Models';
 
 
 const AddLicenseForm = () => {
   const [message, setMessage] = useState("")
 
-  const initialValues : CreateLicence = {
+  const initialValues : CreateLicense = {
     productID: 0,
     appID: '',
     customerID: 0,
@@ -24,11 +24,11 @@ const AddLicenseForm = () => {
   });
 
   const handleSubmit = (
-    { productID, appID, customerID, expiresAt}: CreateLicence,
-    { setSubmitting }: FormikHelpers<CreateLicence>
+    { productID, appID, customerID, expiresAt}: CreateLicense,
+    { setSubmitting }: FormikHelpers<CreateLicense>
   ) => {
     try {
-      // await CreateLicence({productID, appID, customerID, expiresAt});
+      // await CreateLicense({productID, appID, customerID, expiresAt});
       console.log({productID, appID, customerID, expiresAt})
       setMessage("Message from create licence")
     } catch(error) {
@@ -119,7 +119,7 @@ const AddLicenseForm = () => {
               )}
             </Form>
             <Link to="/">
-              Know more about licences?
+              Know more about licenses?
             </Link>
           </div>
         </div>

@@ -7,9 +7,9 @@ import {
 } from './IForm';
 
 import {
-  Licence,
-  CreateLicence
-} from './ILicence.interface';
+  License,
+  CreateLicense
+} from './ILicense.interface';
 
 export { 
   FormValues,
@@ -17,6 +17,6 @@ export {
   OtherProps,
   ForgotEmail,
   resetPassword,
-  Licence,
-  CreateLicence
+  License,
+  CreateLicense
 };

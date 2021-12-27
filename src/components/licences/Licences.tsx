@@ -1,17 +1,17 @@
 import React, { FC , useEffect, useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../app/App.css'
-import { getLicences } from '../../services/license/licence.service';
-import { Licence } from '../../Models';
-import AddLicenceModal from './addLicenceModal';
+import { getLicenses } from '../../services/license/license.service';
+import { License } from '../../Models';
+import AddLicenseModal from './addLicenseModal';
 
-const Licences: FC = () => {
-  const [licences, setLicences] = useState([]);
+const Licenses: FC = () => {
+  const [licenses, setLicenses] = useState([]);
   useEffect(() => {
     (async () => {
       try {
-        const data = await getLicences();
-        setLicences(data);
+        const data = await getLicenses();
+        setLicenses(data);
         return data;
       } catch (err) {
         return err;
@@ -20,10 +20,10 @@ const Licences: FC = () => {
   }, []);
   return (
     <>
-    <AddLicenceModal />
+    <AddLicenseModal />
     <div className="list">
-      {licences && (licences.map((licence: Licence) => (<p key={licence._id}>{licence._id}</p>)))}
-      {!licences && (
+      {licenses && (licenses.map((license: License) => (<p key={license._id}>{license._id}</p>)))}
+      {!licenses && (
         <p>loading...</p>
       )}
     </div>
@@ -32,4 +32,4 @@ const Licences: FC = () => {
   );
 }
 
-export default Licences;
+export default Licenses;

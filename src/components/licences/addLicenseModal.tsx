@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import '../../app/App.css';
 import Modal from 'react-modal';
-import AddLicenseForm from './addLicenceForm';
+import AddLicenseForm from './addLicenseForm';
 
 Modal.setAppElement('#root')
 
-const AddLicenceModal: FC = () => {
+const AddLicenseModal: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
     <>
@@ -32,4 +32,4 @@ const AddLicenceModal: FC = () => {
   )
 }
 
-export default AddLicenceModal
+export default AddLicenseModal
