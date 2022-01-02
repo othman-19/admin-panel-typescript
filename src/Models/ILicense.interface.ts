@@ -1,5 +1,5 @@
 export interface License {
-  _id: string;
+  ID: string;
 }
 
 export interface CreateLicense {

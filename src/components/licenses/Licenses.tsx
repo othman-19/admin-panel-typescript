@@ -11,8 +11,7 @@ const Licenses: FC = () => {
     (async () => {
       try {
         const data = await getLicenses();
-        setLicenses(data);
-        return data;
+        setLicenses(data.items);
       } catch (err) {
         return err;
       }
@@ -22,7 +21,7 @@ const Licenses: FC = () => {
     <>
     <AddLicenseModal />
     <div className="list">
-      {licenses && (licenses.map((license: License) => (<p key={license._id}>{license._id}</p>)))}
+      {licenses && (licenses.map((license: License) => (<p key={license.ID}>{license.ID}</p>)))}
       {!licenses && (
         <p>loading...</p>
       )}

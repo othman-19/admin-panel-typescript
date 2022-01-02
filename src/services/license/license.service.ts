@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { CreateLicense } from '../../Models';
 import { License } from '../../Models';
-
-const API_url = 'Fake_API_url'
+import { API_URL } from '../config';
 
 const getLicenses = async () => {
-    const url= `${API_url}/license`;
+    const url = `${API_URL}/license`;
     const headers= {
       'Content-Type': 'application/json',
     };
   try {
     const response = await axios.get(url, {headers});
-    const users = response.data;
-    return users;
+    const data = response.data;
+    return data;
   } catch (err) {
     return {
       error: err,
@@ -21,7 +20,7 @@ const getLicenses = async () => {
 };
 
 const createLicense = async (licenseData: CreateLicense) => {
-  const url= `${API_url}/license`;
+  const url= `${API_URL}/license`;
   const headers= {
     'Content-Type': 'application/json',
   };
@@ -37,9 +36,9 @@ const createLicense = async (licenseData: CreateLicense) => {
 };
 
 const deleteLicense = async (license: License) => {
-  const url= `${API_url}/license`;
+  const url= `${API_URL}/license`;
   try {
-    const response = await axios.delete(url, {data: license._id});
+    const response = await axios.delete(url, {data: license.ID});
     const data = response.data;
     return data;
   } catch (err) {
