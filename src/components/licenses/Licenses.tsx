@@ -2,7 +2,7 @@ import React, { FC , useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../app/App.css'
-import { getLicenses } from '../../services/license/license.service';
+import { getLicenses, deleteLicense } from '../../services/license/license.service';
 import { License } from '../../Models';
 import AddLicenseModal from './addLicenseModal';
 
@@ -29,7 +29,14 @@ const Licenses: FC = () => {
                 <div className="card-body">
                   <h5 className="card-title">license: {license.license}</h5>
                   <p className="card-text">application ID: {license.appID}</p>
-                  <Link to="#" className="btn btn-primary">Licence Info</Link>
+                  <Link to="#" className="btn btn-primary mx-1">Licence Info</Link>
+                  <button
+                    type='submit'
+                    className="btn btn-danger mx-1"
+                    onClick={() => deleteLicense(license)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
