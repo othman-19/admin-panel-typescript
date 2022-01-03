@@ -26,7 +26,6 @@ const PostCreateLicense = async (licenseData: CreateLicense) => {
   };
   try {
     const response = await axios.post(url, licenseData, {headers});
-    console.log('response', response);
     const data = response.data;
     return data;
   } catch (err) {

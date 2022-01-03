@@ -8,7 +8,7 @@ import { CreateLicense } from '../../Models';
 
 
 const AddLicenseForm = () => {
-  const [message, setMessage] = useState("")
+  const [err, setErr] = useState({message:'', flag: ''})
 
   const initialValues : CreateLicense = {
     productID: 1,
@@ -22,16 +22,21 @@ const AddLicenseForm = () => {
       customerID: Yup.number().required('customerID is required'),
   });
 
+  const handleErrorMessage = (data: {error:string}) => {
+    data.error
+        ? setErr({message:'Error, Licence Not Created', flag:'danger'})
+        : setErr({message:'License created', flag:'success'})
+  }
+
   const handleSubmit = async (
     { productID, appID, customerID, expiresAt}: CreateLicense,
     { setSubmitting }: FormikHelpers<CreateLicense>
   ) => {
     try {
-      await PostCreateLicense({productID, appID, customerID, expiresAt});
-      setMessage("Licence Created")
+      const data = await PostCreateLicense({productID, appID, customerID, expiresAt});
+      handleErrorMessage(data)
     } catch(error) {
       setSubmitting(false);
-      console.log("err", error)
     }
   }
 
@@ -94,10 +99,10 @@ const AddLicenseForm = () => {
                   <span>Create Licence</span>
                 </button>
               </div>
-              {message && (
+              {err.message && (
                 <div className="form-group my-4">
-                  <div className="alert alert-danger" role="alert">
-                    {message}
+                  <div className={`alert alert-${err.flag}`} role="alert">
+                    {err.message}
                   </div>
                 </div>
               )}
