@@ -34,6 +34,15 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 10%;
 }
+
+a.navbar-brand {
+  width: 10%;
+}
+
+.small {
+  width: 40%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
