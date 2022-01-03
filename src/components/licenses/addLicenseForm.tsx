@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import  { Link } from 'react-router-dom'
 import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
-// import { CreateLicense } from "../services/license";
+import { PostCreateLicense } from "../../services/license/license.service";
 import image from "../../assets/moodme-logo.png"
 import { CreateLicense } from '../../Models';
 
@@ -11,29 +11,27 @@ const AddLicenseForm = () => {
   const [message, setMessage] = useState("")
 
   const initialValues : CreateLicense = {
-    productID: 0,
+    productID: 1,
     appID: '',
     customerID: 0,
     expiresAt: 0,
   };
 
   const validationSchema = Yup.object().shape({
-      productID: Yup.number()
-        .required('Product is required'),
       appID: Yup.string().required('Application is required'),
+      customerID: Yup.number().required('customerID is required'),
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     { productID, appID, customerID, expiresAt}: CreateLicense,
     { setSubmitting }: FormikHelpers<CreateLicense>
   ) => {
     try {
-      // await CreateLicense({productID, appID, customerID, expiresAt});
-      console.log({productID, appID, customerID, expiresAt})
-      setMessage("Message from create licence")
+      await PostCreateLicense({productID, appID, customerID, expiresAt});
+      setMessage("Licence Created")
     } catch(error) {
       setSubmitting(false);
-      console.log(error)
+      console.log("err", error)
     }
   }
 
@@ -53,20 +51,6 @@ const AddLicenseForm = () => {
               className="profile-img-card"
             />
             <Form>
-              <div className="form-group">
-                <label htmlFor="productID">productID</label>
-                <Field
-                  className="form-control"
-                  type="text"
-                  name="productID"
-                />
-                <ErrorMessage
-                  name="productID"
-                  component="div"  
-                  className="alert alert-danger"
-                />
-    
-              </div>
               <div className="form-group">
                 <label htmlFor="appID">appID</label>
                 <Field

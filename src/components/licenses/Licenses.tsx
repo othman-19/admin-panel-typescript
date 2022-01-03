@@ -24,8 +24,8 @@ const Licenses: FC = () => {
       <div className="row">
         {licenses && (licenses.map(
           (license: License) => (
-            <div className="col-sm-6">
-              <div className="card" key={license.ID}>
+            <div className="col-sm-6" key={license.ID}>
+              <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">license: {license.license}</h5>
                   <p className="card-text">application ID: {license.appID}</p>

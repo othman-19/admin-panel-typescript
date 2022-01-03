@@ -19,13 +19,14 @@ const getLicenses = async () => {
   }
 };
 
-const createLicense = async (licenseData: CreateLicense) => {
+const PostCreateLicense = async (licenseData: CreateLicense) => {
   const url= `${API_URL}/license`;
   const headers= {
     'Content-Type': 'application/json',
   };
   try {
     const response = await axios.post(url, licenseData, {headers});
+    console.log('response', response);
     const data = response.data;
     return data;
   } catch (err) {
@@ -49,4 +50,4 @@ const deleteLicense = async (license: License) => {
 };
 
 
-export { getLicenses, createLicense, deleteLicense };
+export { getLicenses, PostCreateLicense, deleteLicense };
