@@ -36,9 +36,10 @@ const PostCreateLicense = async (licenseData: CreateLicense) => {
 };
 
 const deleteLicense = async (license: License) => {
-  const url= `${API_URL}/license`;
+  const url= `${API_URL}/license/${license.ID}`;
   try {
-    const response = await axios.delete(url, {data: license.ID});
+    console.log(license)
+    const response = await axios.delete(url);
     const data = response.data;
     return data;
   } catch (err) {
