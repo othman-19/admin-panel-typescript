@@ -2,19 +2,23 @@ import React, { FC , useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../app/App.css'
-import { getLicenses, deleteLicense } from '../../services/license/license.service';
+// import { getLicenses, deleteLicense } from '../../services/license/license.service';
 import { License } from '../../Models';
 import AddLicenseModal from './addLicenseModal';
+import * as API from '../../services/typescript-fetch-client'
+
+const { licenseList, deleteLicense } = API.LicensingApiFp();
 
 const Licenses: FC = () => {
   const [licenses, setLicenses] = useState([]);
   useEffect(() => {
     (async () => {
       try {
-        const data = await getLicenses();
-        setLicenses(data.items);
+        const data = await licenseList()();
+        console.log(data);
+        // setLicenses(data.items);
       } catch (err) {
-        return err;
+        throw err;
       }
     })();
   }, []);
@@ -33,7 +37,7 @@ const Licenses: FC = () => {
                   <button
                     type='submit'
                     className="btn btn-danger mx-1"
-                    onClick={() => deleteLicense(license)}
+                    onClick={() => deleteLicense(Number(license.ID))}
                   >
                     Delete
                   </button>
