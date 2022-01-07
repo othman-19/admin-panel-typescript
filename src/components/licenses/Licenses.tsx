@@ -2,21 +2,19 @@ import React, { FC , useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../app/App.css'
-// import { getLicenses, deleteLicense } from '../../services/license/license.service';
-import { License } from '../../Models';
 import AddLicenseModal from './addLicenseModal';
 import * as API from '../../services/typescript-fetch-client'
+import { LicenseInfo } from '../../services/typescript-fetch-client';
 
 const { licenseList, deleteLicense } = API.LicensingApiFp();
 
 const Licenses: FC = () => {
-  const [licenses, setLicenses] = useState([]);
+  const [licenses, setLicenses] = useState<LicenseInfo[]>([]);
   useEffect(() => {
     (async () => {
       try {
         const data = await licenseList()();
-        console.log(data);
-        // setLicenses(data.items);
+        setLicenses(data.items);
       } catch (err) {
         throw err;
       }
@@ -27,7 +25,7 @@ const Licenses: FC = () => {
       <AddLicenseModal />
       <div className="row">
         {licenses && (licenses.map(
-          (license: License) => (
+          (license: LicenseInfo) => (
             <div className="col-sm-6" key={license.ID}>
               <div className="card">
                 <div className="card-body">

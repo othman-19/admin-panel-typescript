@@ -15,8 +15,8 @@
 import * as url from "url";
 import * as isomorphicFetch from "isomorphic-fetch";
 import { Configuration } from "./configuration";
-
-const BASE_PATH = "https://virtserver.swaggerhub.com/yuryshubin/MoodMe-StoreApi/1.0.0".replace(/\/+$/, "");
+import { API_URL } from '../config';
+const BASE_PATH = API_URL.replace(/\/+$/, "");
 
 /**
  *
