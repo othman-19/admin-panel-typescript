@@ -26,8 +26,12 @@ const Licenses: FC = () => {
   }, [loading, licenses]);
 
   const handleDeleteLicense = async (license: LicenseInfo) => {
-    await deleteLicense(license.ID)();
-    setLicenses(licenses.filter((item) => item.ID !== license.ID));
+    try {
+      await deleteLicense(license.ID)();
+      setLicenses(licenses.filter((item) => item.ID !== license.ID));
+    } catch (error) {
+      throw error
+    }
   }
   return (
     <div className='container'>
@@ -56,7 +60,7 @@ const Licenses: FC = () => {
         
       </div>
       <div className="row">
-        {!licenses && (
+        {loading && (
           <p>loading...</p>
         )}
       </div>
