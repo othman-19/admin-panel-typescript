@@ -180,7 +180,7 @@ export interface GetLicensesResponse {
  * 
  * @export
  */
-export type ID = number
+export type ID = number | string
 /**
  * 
  * @export

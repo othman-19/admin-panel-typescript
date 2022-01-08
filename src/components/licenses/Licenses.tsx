@@ -10,16 +10,25 @@ const { licenseList, deleteLicense } = API.LicensingApiFp();
 
 const Licenses: FC = () => {
   const [licenses, setLicenses] = useState<LicenseInfo[]>([]);
+  const [loading, setloding] = useState<boolean>(true);
+
   useEffect(() => {
     (async () => {
       try {
         const data = await licenseList()();
         setLicenses(data.items);
+        setloding(false)
       } catch (err) {
+        setloding(false);
         throw err;
       }
     })();
-  }, []);
+  }, [loading, licenses]);
+
+  const handleDeleteLicense = async (license: LicenseInfo) => {
+    await deleteLicense(license.ID)();
+    setLicenses(licenses.filter((item) => item.ID !== license.ID));
+  }
   return (
     <div className='container'>
       <AddLicenseModal />
@@ -35,7 +44,7 @@ const Licenses: FC = () => {
                   <button
                     type='submit'
                     className="btn btn-danger mx-1"
-                    onClick={() => deleteLicense(Number(license.ID))}
+                    onClick={() => handleDeleteLicense(license)}
                   >
                     Delete
                   </button>
