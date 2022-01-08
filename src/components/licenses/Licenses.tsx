@@ -1,7 +1,6 @@
 import React, { FC , useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
-import '../../app/App.css'
+import Spinner from '../UI/Spinner';
 import AddLicenseModal from './addLicenseModal';
 import * as API from '../../services/typescript-fetch-client'
 import { LicenseInfo } from '../../services/typescript-fetch-client';
@@ -60,9 +59,7 @@ const Licenses: FC = () => {
         
       </div>
       <div className="row">
-        {loading && (
-          <p>loading...</p>
-        )}
+        { loading && <Spinner /> }
       </div>
     </div>
 

@@ -81,3 +81,9 @@ a.navbar-brand {
   position: absolute;
   top: 30px;
 }
+
+.spinner-style {
+  width: 3rem;
+  height: 3rem;
+  margin: 10rem;
+}

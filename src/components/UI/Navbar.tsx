@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
-import AppRouter from '../../app/Router';
 import MoodmeLogo from './MoodmeLogo';
 
 const Navbar: FC = () => (
