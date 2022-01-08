@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import  { Link } from 'react-router-dom'
+import  { Link } from 'react-router-dom';
 import { Formik, FormikHelpers, ErrorMessage, Field, Form} from "formik";
 import * as Yup from "yup";
-import { PostCreateLicense } from "../../services/license/license.service";
-import image from "../../assets/moodme-logo.png"
-import { CreateLicense } from '../../Models';
+import image from "../../assets/moodme-logo.png";
 
+import * as API from '../../services/typescript-fetch-client'
+import { CreateLicenseInput, LicenseInfo } from '../../services/typescript-fetch-client';
+
+const { createLicense } = API.LicensingApiFp();
 
 const AddLicenseForm = () => {
-  const [err, setErr] = useState({message:'', flag: ''})
+  const [serverMessage, setServerMessage] = useState({message:'', flag: ''})
 
-  const initialValues : CreateLicense = {
+  const initialValues : CreateLicenseInput = {
     productID: 1,
     appID: '',
     customerID: 0,
@@ -22,20 +24,21 @@ const AddLicenseForm = () => {
       customerID: Yup.number().required('customerID is required'),
   });
 
-  const handleErrorMessage = (data: {error:string}) => {
-    data.error
-        ? setErr({message:'Error, Licence Not Created', flag:'danger'})
-        : setErr({message:'License created', flag:'success'})
+  const handleServerMessage = (data: LicenseInfo | any) => {
+    !data.ID
+        ? setServerMessage({message:'Error, Licence Not Created', flag:'danger'})
+        : setServerMessage({message:'License created', flag:'success'})
   }
 
   const handleSubmit = async (
-    { productID, appID, customerID, expiresAt}: CreateLicense,
-    { setSubmitting }: FormikHelpers<CreateLicense>
+    { productID, appID, customerID, expiresAt}: CreateLicenseInput,
+    { setSubmitting }: FormikHelpers<CreateLicenseInput>
   ) => {
     try {
-      const data = await PostCreateLicense({productID, appID, customerID, expiresAt});
-      handleErrorMessage(data)
+      const data = await createLicense({productID, appID, customerID, expiresAt})();
+      handleServerMessage(data)
     } catch(error) {
+      handleServerMessage(error)
       setSubmitting(false);
     }
   }
@@ -99,10 +102,10 @@ const AddLicenseForm = () => {
                   <span>Create Licence</span>
                 </button>
               </div>
-              {err.message && (
+              {serverMessage.message && (
                 <div className="form-group my-4">
-                  <div className={`alert alert-${err.flag}`} role="alert">
-                    {err.message}
+                  <div className={`alert alert-${serverMessage.flag}`} role="alert">
+                    {serverMessage.message}
                   </div>
                 </div>
               )}
