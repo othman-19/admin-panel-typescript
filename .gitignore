@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .serverless
-
+node_modules
 # testing
 /coverage
 
