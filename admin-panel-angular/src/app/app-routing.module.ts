@@ -36,7 +36,7 @@ const routes: Routes = [
     component: ConfirmForgotPasswordComponent,
   },
   { path: 'license', component: LicenseList },
-  { path: 'newLicense', component: AddLicenseForm },
+  { path: 'new-license', component: AddLicenseForm },
 ];
 
 @NgModule({
