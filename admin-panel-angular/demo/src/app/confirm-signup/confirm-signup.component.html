@@ -1,0 +1,21 @@
+<div style="text-align: center">
+  <h1>Signup Confirmation</h1>
+  <br>
+  <div>
+    <label for="email">Email: </label>
+    <input id="email" type="email" [(ngModel)]="email">
+  </div>
+  <br>
+  <div>
+    <label for="code">Code: </label>
+    <input id="code" type="text" [(ngModel)]="code">
+  </div>
+  <br>
+  <br>
+  <button (click)="onConfirm()">Confirm</button>
+  <br>
+  <br>
+  <a routerLink="/login">Login</a>
+  <br>
+  <br>
+</div>

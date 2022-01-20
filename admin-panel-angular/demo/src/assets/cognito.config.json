@@ -1,0 +1,9 @@
+{
+  "cognito": {
+    "website": "https://moodme-app.auth.us-east-2.amazoncognito.com",
+    "identityPoolRegion": "us-east-1",
+    "region": "us-east-1",
+    "userPoolId": "us-east-1_sHZl4qj3K",
+    "userPoolWebClientId": "7qcjvf2aesh7e9eigsevm0ni22"
+  }
+}

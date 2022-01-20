@@ -1,0 +1,14 @@
+<div style="text-align: center">
+  <h1>Change Email</h1>
+  <br>
+  <div>
+    <label for="email">Email: </label>
+    <input id="email" type="email" [(ngModel)]="email">
+  </div>
+  <br>
+  <button [disabled]="!email.length" (click)="onChange()">Change</button>
+  <br>
+  <br>
+  <a routerLink="/dashboard">Back</a>
+  <br>
+</div>
