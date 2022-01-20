@@ -11,17 +11,10 @@ export class LicenseList implements OnInit {
   constructor(private cognitoService: CognitoService, private router: Router) {}
 
   ngOnInit(): void {
-    this.cognitoService.onSignOut$.subscribe(() => {
-      console.info(`on logout`);
-      this.router.navigate(['/login']);
-    });
+    this.fetchLicenses();
   }
 
-  async onLogout() {
-    await this.cognitoService.logout();
-  }
-
-  async onRefreshToken() {
-    await this.cognitoService.refreshSession();
+  private async fetchLicenses() {
+    await this.licenses = await this.getLicenses();
   }
 }
