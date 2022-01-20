@@ -10,6 +10,10 @@ import {
   ConfirmSignupComponent,
   ChangeEmailComponent
 } from './auth';
+import {
+  LicenseList,
+  AddLicenseForm,
+} from "./license"
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -31,6 +35,8 @@ const routes: Routes = [
     path: 'confirm-forgot-password',
     component: ConfirmForgotPasswordComponent,
   },
+  { path: 'license', component: LicenseList },
+  { path: 'newLicense', component: AddLicenseForm },
 ];
 
 @NgModule({
