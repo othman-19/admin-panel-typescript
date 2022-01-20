@@ -1,7 +1,8 @@
 <div>
   <h1>License List</h1>
-  <br>
-  <br>
-  <br>
-  <button (click)="onLogout()">Logout</button>
+  <ul>
+    <li *ngFor="let license of licenses" >
+      <span >{{license}}</span>
+    </li>
+  </ul>
 </div>

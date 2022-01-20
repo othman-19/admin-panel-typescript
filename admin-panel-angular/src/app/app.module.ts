@@ -1,5 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import * as API from '../api/licenseService';
+
 import {
   LoginComponent,
   SignupComponent,
@@ -22,6 +24,7 @@ import {
   CognitoConfigService,
   CognitoModule,
 } from 'cognito-angular';
+import { LicenseList } from './license';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import {
     ChangePasswordComponent,
     ConfirmSignupComponent,
     ChangeEmailComponent,
+    LicenseList,
   ],
   imports: [
     HttpClientModule,
@@ -57,6 +61,7 @@ import {
       deps: [HttpClient, CognitoConfigService],
       multi: true,
     },
+    API.LicensingApi,
   ],
   bootstrap: [AppComponent],
 })
