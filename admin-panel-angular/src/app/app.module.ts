@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import * as API from '../api/licenseService';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   LoginComponent,
@@ -47,6 +48,7 @@ import { LicenseList } from './license';
     AppRoutingModule,
     CognitoModule.forRoot('VERBOSE'),
     FormsModule,
+    NgbModule,
   ],
   providers: [
     {
