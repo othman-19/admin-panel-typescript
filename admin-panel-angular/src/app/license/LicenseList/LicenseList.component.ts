@@ -19,8 +19,24 @@ export class LicenseList implements OnInit {
     this.fetchLicenses();
   }
 
+  ngOnDelete(licence: LicenseInfo): void {
+    this.deleteLicense(licence);
+  }
+
   private async fetchLicenses() {
-    this.licenses  = (await licenseAPI.licenseList()).items
-    console.log(this.licenses)
+    try {
+      this.licenses  = (await licenseAPI.licenseList()).items
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  private async deleteLicense(licence: LicenseInfo) {
+    try {
+      await licenseAPI.deleteLicense(licence.ID);
+      this.fetchLicenses();
+    }catch (error) {
+      console.log(error)
+    }
   }
 }
