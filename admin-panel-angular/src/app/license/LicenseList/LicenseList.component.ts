@@ -13,7 +13,7 @@ const licenseAPI = new API.LicensingApi
 
 export class LicenseList implements OnInit {
   licenses: LicenseInfo [];
-  constructor(private licenseList: API.LicensingApi) {}
+  constructor(private LicensingApi: API.LicensingApi) {}
 
   ngOnInit(): void {
     this.fetchLicenses();
@@ -25,7 +25,7 @@ export class LicenseList implements OnInit {
 
   private async fetchLicenses() {
     try {
-      this.licenses  = (await licenseAPI.licenseList()).items
+      this.licenses  = (await this.LicensingApi.licenseList()).items
     } catch (error) {
       console.log(error)
     }

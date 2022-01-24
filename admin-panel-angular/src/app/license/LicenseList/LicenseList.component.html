@@ -1,9 +1,16 @@
-<div class='container'>
+<div class='container text-center my-4'>
   <h1>License List</h1>
+  <button
+      routerLink="/new-license"
+      type='button'
+      class="btn btn-primary m-4"
+    >
+      Add License
+    </button>
   <div >
     <div class="row">
       <div class="col-sm-6" *ngFor="let license of licenses">
-        <div class="card">
+        <div class="card my-1">
           <div class="card-body" >
             <h5 class="card-title">license: {{license.license}}</h5>
             <p class="card-text">application ID: {{license.appID}}</p>

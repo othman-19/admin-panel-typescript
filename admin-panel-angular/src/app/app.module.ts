@@ -25,7 +25,7 @@ import {
   CognitoConfigService,
   CognitoModule,
 } from 'cognito-angular';
-import { LicenseList } from './license';
+import { LicenseList, AddLicenseForm } from './license';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { LicenseList } from './license';
     ConfirmSignupComponent,
     ChangeEmailComponent,
     LicenseList,
+    AddLicenseForm
   ],
   imports: [
     HttpClientModule,
