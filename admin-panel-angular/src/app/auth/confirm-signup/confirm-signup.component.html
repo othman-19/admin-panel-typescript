@@ -1,21 +1,48 @@
-<div style="text-align: center">
-  <h1>Signup Confirmation</h1>
-  <br>
-  <div>
-    <label for="email">Email: </label>
-    <input id="email" type="email" [(ngModel)]="email">
+<div class="container text-center d-flex justify-content-center">
+  <div class="col-md-6 ModalForm center">
+    <div class="card card-container p-4 my-4">
+      <h3>Signup Confirmation</h3>
+      <!-- <img
+        src={image}
+        alt="profile-img"
+        class="profile-img-card"
+      /> -->
+      <Form>
+        <div class="form-group">
+          <label htmlFor="email">Email: </label>
+          <input
+            id="email"
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label htmlFor="code">Code: </label>
+          <input
+            id="code"
+            class="form-control"
+            type="text"
+            name="code"
+            [(ngModel)]="code"
+          />
+        </div>
+        <div class="form-group my-4" >
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            [disabled]="!email.length && !code.length"
+            (click)="onConfirm()"
+          >
+            Submit
+          </button>
+        </div>
+      </Form>
+      <a routerLink="/login">To Login</a>
+    </div>
   </div>
-  <br>
-  <div>
-    <label for="code">Code: </label>
-    <input id="code" type="text" [(ngModel)]="code">
-  </div>
-  <br>
-  <br>
-  <button (click)="onConfirm()">Confirm</button>
-  <br>
-  <br>
-  <a routerLink="/login">Login</a>
-  <br>
-  <br>
 </div>
+
+
+

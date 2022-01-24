@@ -1,24 +1,97 @@
-<div>
+<div class='container text-center my-4'>
   <h1>Dashboard</h1>
-  <br>
-  <br>
-  <br>
-  <button (click)="onLogout()">Logout</button>
-  <br>
-  <br>
-  <button (click)="onRefreshToken()">Refresh Token</button>
-  <br>
-  <br>
-  <a routerLink="/change-password">Change Password</a>
-  <br>
-  <br>
-  <a routerLink="/change-email">Change Email</a>
-  <br>
-  <br>
-  <a routerLink="/new-license">Add License</a>
-  <br>
-  <br>
-  <a routerLink="/license">License List</a>
-  <br>
-  <br>
+  <div >
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">License List</h5>
+            <p class="card-text">Show license list</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              routerLink="/license"
+            >
+              List
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">New License</h5>
+            <p class="card-text">Create New License</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              routerLink="/new-license"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">Sign out</h5>
+            <p class="card-text">Sign out</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              (click)="onLogout()"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">Refresh Token</h5>
+            <p class="card-text">Refresh Token</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              (click)="onRefreshToken()"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">Change Password</h5>
+            <p class="card-text">Change Password</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              routerLink="/change-password"
+            >
+              Change
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card my-1">
+          <div class="card-body" >
+            <h5 class="card-title">Change Email</h5>
+            <p class="card-text">Change Email</p>
+            <button
+              type='button'
+              class="btn btn-primary mx-1"
+              routerLink="/change-email"
+            >
+              Change
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
