@@ -1,22 +1,46 @@
-<div style="text-align: center">
-  <h1>Login</h1>
-  <br>
-  <div>
-    <label for="email">Email: </label>
-    <input id="email" type="email" [(ngModel)]="email">
+<div class="container text-center d-flex justify-content-center">
+  <div class="col-md-6 ModalForm center">
+    <div class="card card-container p-4 my-4">
+      <h3>Login</h3>
+      <!-- <img
+        src={image}
+        alt="profile-img"
+        class="profile-img-card"
+      /> -->
+      <Form>
+        <div class="form-group">
+          <label htmlFor="email">Email: </label>
+          <input
+            id="email"
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label htmlFor="password">Password: </label>
+          <input
+            id="password"
+            class="form-control"
+            type="text"
+            name="password"
+            [(ngModel)]="password"
+          />
+        </div>
+        <div class="form-group my-4" >
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            [disabled]="!email.length && !password.length"
+            (click)="onLogin()"
+          >
+            Login
+          </button>
+        </div>
+      </Form>
+      <a routerLink="/signup">Signup</a>
+    </div>
   </div>
-  <br>
-  <div>
-    <label for="password">Password: </label>
-    <input id="password" type="password" [(ngModel)]="password">
-  </div>
-  <br>
-  <button [disabled]="!email.length && !password.length" (click)="onLogin()">Login</button>
-  <br>
-  <br>
-  <a routerLink="/forgot-password">Forgot Password</a>
-  <br>
-  <a routerLink="/signup">Signup</a>
-  <br>
-  <br>
 </div>
+
