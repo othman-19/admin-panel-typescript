@@ -2,17 +2,6 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import * as API from '../api/licenseService';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import {
-  LoginComponent,
-  SignupComponent,
-  ForgotPasswordComponent,
-  ChangePasswordChallengeComponent,
-  ConfirmForgotPasswordComponent,
-  ChangePasswordComponent,
-  ConfirmSignupComponent,
-  ChangeEmailComponent
-} from './auth';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,11 +14,24 @@ import {
   CognitoConfigService,
   CognitoModule,
 } from 'cognito-angular';
+import {
+  LoginComponent,
+  SignupComponent,
+  ForgotPasswordComponent,
+  ChangePasswordChallengeComponent,
+  ConfirmForgotPasswordComponent,
+  ChangePasswordComponent,
+  ConfirmSignupComponent,
+  ChangeEmailComponent,
+} from './auth';
+import { NavbarComponent } from './UI/navbar/navbar.component'
+
 import { LicenseList, AddLicenseForm } from './license';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     LoginComponent,
     ChangePasswordChallengeComponent,
     ForgotPasswordComponent,
